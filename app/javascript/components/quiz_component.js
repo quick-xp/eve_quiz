@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import QuizImage from './quiz_image';
 
 export default class QuizComponent extends React.Component {
   static propTypes = {
@@ -18,11 +19,21 @@ export default class QuizComponent extends React.Component {
     const { question } = this.props;
 
     return (
-      <div className="row m-t-1">
-      <div className="col-md-2 bg-info">② 544px以上で6列幅のボックス</div>
-        series: {this.props.questionSeriesNo} <br/>
-        {question} / Hello
-        <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
+      <div className="row">
+        <div className='col-md-1'>
+          <p> No1 </p>
+        </div>
+        <div className='col-md-12'>
+          <QuizImage/>
+        </div>
+        <div className='col-md-12'>
+          <p> この船の名前は何？ </p>
+        </div>
+        <div className='col-md-12'>
+          series: {this.props.questionSeriesNo} <br/>
+          {question} / Hello
+          <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
+        </div>
       </div>
     );
   }
