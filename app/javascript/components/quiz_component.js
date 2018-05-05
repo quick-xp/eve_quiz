@@ -20,11 +20,11 @@ export default class QuizComponent extends React.Component {
 
     return (
       <div className="row">
-        <div className='col-md-1'>
+        <div className='col-md-12'>
           <p> No1 </p>
         </div>
         <div className='col-md-12'>
-          <QuizImage/>
+          <div className='col-md-4'><QuizImage/></div>
         </div>
         <div className='col-md-12'>
           <p> この船の名前は何？ </p>

@@ -17,7 +17,7 @@ export default class QuizImage extends React.Component {
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className="d-block w-100" src="https://image.eveonline.com/Render/17738_512.png" alt="First slide" />
+                        <img className="d-block w-100" src="https://image.eveonline.com/Render/17738_256.png" alt="First slide" />
                     </div>
                 </div>
             </div>
