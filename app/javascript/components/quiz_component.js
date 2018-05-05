@@ -18,9 +18,11 @@ export default class QuizComponent extends React.Component {
     const { question } = this.props;
 
     return (
-      <div className="row">
+      <div className="row m-t-1">
+      <div className="col-md-2 bg-info">② 544px以上で6列幅のボックス</div>
         series: {this.props.questionSeriesNo} <br/>
         {question} / Hello
+        <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
       </div>);
   }
 }
