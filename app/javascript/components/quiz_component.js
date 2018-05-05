@@ -30,15 +30,14 @@ export default class QuizComponent extends React.Component {
           <p> この船の名前は何？ </p>
         </div>
         <div className='col-md-12'>
-          series: {this.props.questionSeriesNo} <br/>
-          {question} / Hello
+          No.1
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
         </div>
         <div className='col-md-12'>
-          <p> この文字はテストです。この文字はテストです。自由にお使いください。 </p>
+          <p> ヒント: ヒントがある場合はここに表示されます。 </p>
         </div>
       </div>
     );
