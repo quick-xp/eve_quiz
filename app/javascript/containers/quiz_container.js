@@ -4,7 +4,7 @@ import { fetchQuestion } from '../actions/quiz';
 
 const mapStateToProps = (state) => {
   return { 
-    question: state.question
+    question: state.quiz.question
   };
 }
 

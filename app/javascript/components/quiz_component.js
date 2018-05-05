@@ -19,7 +19,7 @@ export default class QuizComponent extends React.Component {
 
     return (
       <div className="row">
-        {this.props.question} / Hello
+        {question} / Hello
       </div>);
   }
 }
