@@ -23,6 +23,7 @@ export default class QuizComponent extends React.Component {
         series: {this.props.questionSeriesNo} <br/>
         {question} / Hello
         <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
-      </div>);
+      </div>
+    );
   }
 }
