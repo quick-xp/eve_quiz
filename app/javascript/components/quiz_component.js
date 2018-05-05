@@ -19,6 +19,7 @@ export default class QuizComponent extends React.Component {
 
     return (
       <div className="row">
+        series: {this.props.questionSeriesNo} <br/>
         {question} / Hello
       </div>);
   }
