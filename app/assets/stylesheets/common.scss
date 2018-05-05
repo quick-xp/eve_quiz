@@ -1,8 +1,13 @@
 @font-face {
     font-family: 'Nicomoji';
-    src: url('fonts/nicomoji-plus_1.11.ttf');
+    src: font-url('nicomoji-plus_1.11.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 } 
 
-body {
-    font-family: 'hoge';
-}
+@font-face {
+    font-family: 'Arciform';
+    src: font-url('Arciform.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} 

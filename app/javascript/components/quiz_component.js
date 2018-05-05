@@ -32,7 +32,13 @@ export default class QuizComponent extends React.Component {
         <div className='col-md-12'>
           series: {this.props.questionSeriesNo} <br/>
           {question} / Hello
-          <button type="button" className="btn btn-primary btn-lg btn-block">Block level button</button>
+          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
+          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
+          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
+          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
+        </div>
+        <div className='col-md-12'>
+          <p> この文字はテストです。この文字はテストです。自由にお使いください。 </p>
         </div>
       </div>
     );
