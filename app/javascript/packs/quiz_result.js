@@ -6,7 +6,7 @@ import QuizResultContainer from '../containers/quiz_result_container';
 
 const appStore = configureStore();
 
-class QuizResultsApp extends React.Component {
+class QuizResultApp extends React.Component {
   render() {
     const { store } = this.props;
 
