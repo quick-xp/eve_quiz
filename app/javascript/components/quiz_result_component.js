@@ -4,27 +4,17 @@ import {Radar} from 'react-chartjs-2';
 import {Line} from 'react-chartjs-2';
 
 const data = {
-  labels  : ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+  labels  : ['PvP', 'PvE', '生産', '交易', '探検', 'その他'],
   datasets: [
       {
-          label                    : 'My First dataset',
+          label                    : '分野毎の知識',
           backgroundColor          : 'rgba(179,181,198,0.2)',
           borderColor              : 'rgba(179,181,198,1)',
           pointBackgroundColor     : 'rgba(179,181,198,1)',
           pointBorderColor         : '#fff',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor    : 'rgba(179,181,198,1)',
-          data                     : [65, 59, 90, 81, 56, 55, 40]
-      },
-      {
-          label                    : 'My Second dataset',
-          backgroundColor          : 'rgba(255,99,132,0.2)',
-          borderColor              : 'rgba(255,99,132,1)',
-          pointBackgroundColor     : 'rgba(255,99,132,1)',
-          pointBorderColor         : '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor    : 'rgba(255,99,132,1)',
-          data                     : [28, 48, 40, 19, 96, 27, 100]
+          data                     : [10,12,8,15,2,8]
       }
   ]
 };
@@ -46,35 +36,8 @@ export default class QuizResultComponent extends React.Component {
   render() {
     const { } = this.props;
 
-    const chartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: 'rgba(75,192,192,0.4)',
-          borderColor: 'rgba(75,192,192,1)',
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: 'rgba(75,192,192,1)',
-          pointBackgroundColor: '#fff',
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-          pointHoverBorderColor: 'rgba(220,220,220,1)',
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40],
-        }
-      ]
-    };
-
     return (
-      <span>
+      <div>
         <div className="row">
           <div className='col-md-12'>
             <div className="alert alert-primary" role="alert" style={{textAlign: 'center'}}>
@@ -95,14 +58,26 @@ export default class QuizResultComponent extends React.Component {
           </div>          
         </div>
         <div className="row">
+          <div className='col' style={{backgroundColor: "#ffffff"}}>
+            <Radar data={data} height={200}/>
+          </div>
+        </div>
+        <div className="row">
           <div className='col-md-12'>
           Advise <br />
             <p>すばらしい知識力です。大抵のことは熟知しているためゲーム内で困ることは少ないでしょう。</p>    
           </div>   
         </div>
-        <Radar data={data} />
-        <Line data={chartData} width={200} height={200}/>
-      </span>
+        <div className="row">
+          <div className='col-md-12'>
+          結果をシェアしよう!!
+          <button type="button" className="btn btn-primary btn-lg btn-block">
+            <i className="fa fa-twitter"></i>
+            結果をツイートする
+          </button>
+          </div>   
+        </div>
+      </div>
     );
   }
 }
