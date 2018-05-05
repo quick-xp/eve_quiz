@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { reducerQuiz } from './reducer_quiz.js';
+import { ReducerQuiz } from './reducer_quiz';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   router: routerReducer,
-  reducerQuiz
+  quiz: ReducerQuiz
 });
+
+export default rootReducer;
