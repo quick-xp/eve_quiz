@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class QuizComponent extends React.Component {
   static propTypes = {
-    questionSeriesNo: PropTypes.string.isRequired
+    questionSeriesNo: PropTypes.number.isRequired
   };
 
   constructor(props) {

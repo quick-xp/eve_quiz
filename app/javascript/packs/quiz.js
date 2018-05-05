@@ -12,7 +12,7 @@ class QuizApp extends React.Component {
 
     return (
       <Provider store={store}>
-        <Quiz />
+        <QuizContainer questionSeriesNo={1} />
       </Provider>
     );
   }
