@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '../stores/app_store';
-import Rankings from '../features/rankings/containers/rankings_container';
+import QuizContainer from '../containers/quiz_container';
 
 const appStore = configureStore();
 
