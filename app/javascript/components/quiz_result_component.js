@@ -72,10 +72,11 @@ export default class QuizResultComponent extends React.Component {
           <div className='col-md-12'>
           結果をシェアしよう!!
           <button type="button" className="btn btn-primary btn-lg btn-block">
-            <i className="fa fa-twitter"></i>
+            <i className="fa fa-twitter fa-1x"></i>
             結果をツイートする
           </button>
-          </div>   
+          </div>
+          <br/><br/><br/><br/><br/><br/><br/><br/>
         </div>
       </div>
     );
