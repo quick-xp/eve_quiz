@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import QuizComponent from '../components/quiz_component';
+import { fetchQuestion } from '../actions/quiz';
 
 const mapStateToProps = (state) => {
   return { 
