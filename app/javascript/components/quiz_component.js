@@ -34,7 +34,6 @@ export default class QuizComponent extends React.Component {
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
           <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
-          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
         </div>
         <div className='col-md-12'>
           <p> ヒント: ヒントがある場合はここに表示されます。 </p>
