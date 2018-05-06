@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'quiz_home/index'
+
   get 'quiz_results/index'
 
   get 'pages/index'
