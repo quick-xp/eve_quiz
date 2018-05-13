@@ -37,8 +37,8 @@ create_table "taggings", collate: "utf8_bin" do |t|
   t.int  "tag_id"
   t.varchar   "taggable_type"
   t.int  "taggable_id"
-  t.varchar   "tagger_type"
-  t.int  "tagger_id"
+  t.varchar   "tagger_type", null: true
+  t.int  "tagger_id", null: true
   t.varchar   "context",       limit: 128
   t.datetime "created_at"
   t.index ["context"], name: "index_taggings_on_context"

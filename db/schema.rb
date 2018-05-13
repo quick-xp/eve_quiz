@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "tag_id", null: false
     t.string "taggable_type", null: false
     t.integer "taggable_id", null: false
-    t.string "tagger_type", null: false
-    t.integer "tagger_id", null: false
+    t.string "tagger_type"
+    t.integer "tagger_id"
     t.string "context", limit: 128, null: false
     t.datetime "created_at", null: false
     t.index ["context"], name: "index_taggings_on_context"
