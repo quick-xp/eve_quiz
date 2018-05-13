@@ -279,7 +279,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   better_errors
-  capybara (~> 2.13)
+  capybara
   coffee-rails (~> 4.2)
   convergence
   delayed_job
@@ -291,6 +291,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   parallel
+  poltergeist
   pry
   pry-byebug
   pry-doc
