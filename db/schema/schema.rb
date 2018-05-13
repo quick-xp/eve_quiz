@@ -33,6 +33,7 @@ create_table "choices", collate: "utf8_bin", comment: "" do |t|
 end
 
 create_table "taggings", collate: "utf8_bin" do |t|
+  t.int :id, primary_key: true, extra: :auto_increment
   t.int  "tag_id"
   t.varchar   "taggable_type"
   t.int  "taggable_id"
@@ -52,6 +53,7 @@ create_table "taggings", collate: "utf8_bin" do |t|
 end
 
 create_table "tags", collate: "utf8_bin" do |t|
+  t.int :id, primary_key: true, extra: :auto_increment
   t.varchar  "name"
   t.int "taggings_count", default: 0
   t.index ["name"], name: "index_tags_on_name", unique: true
