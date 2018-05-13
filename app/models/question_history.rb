@@ -16,4 +16,20 @@
 
 class QuestionHistory < ActiveRecord::Base
   belongs_to :question
+
+  def self.create_question_history(questions: Question.create_questions, user_id: nil)
+    uid = SecureRandom.uuid
+
+    questions.each_with_index do |question, i|
+      history = QuestionHistory.new
+      history.history_id = uid
+      history.question = question
+      history.number = i
+      history.choice_list = question.choices.shuffle.map(&:id).join(",")
+      history.user_id = user_id
+      history.save
+    end
+
+    [uid, QuestionHistory.where(history_id: uid)]
+  end
 end
