@@ -26,7 +26,22 @@ end
 create_table "choices", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
   t.int :question_id
+  t.boolean :is_correct
   t.varchar :choice
+
+  t.datetime :created_at
+  t.datetime :updated_at
+end
+
+create_table "answer_histories", collate: "utf8_bin", comment: "" do |t|
+  t.int :id, primary_key: true, extra: :auto_increment
+  t.int :question_id
+  t.int :number
+  t.varchar :choice_list
+  t.varchar :history_id
+  t.int :user_id, null: true
+  t.int :user_choice, null: true
+  t.boolean :user_is_correct, null: true
 
   t.datetime :created_at
   t.datetime :updated_at
