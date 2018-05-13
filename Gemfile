@@ -32,6 +32,8 @@ gem 'acts-as-taggable-on', '~> 5.0'
 gem 'webpacker', '>= 4.0.x'
 
 # web shot
+# brew install phantomjs
+# brew install graphicsmagick
 gem 'capybara'
 gem 'poltergeist'
 gem 'webshot'
