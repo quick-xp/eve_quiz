@@ -40,4 +40,14 @@ class Question < ActiveRecord::Base
 
     questions.shuffle.last(number)
   end
+
+  # TODO 後で移動
+  def self.save_screen
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument("--window-size=400,520")
+    options.add_argument('--headless')
+    driver = Selenium::WebDriver.for :chrome, options: options
+    driver.navigate.to 'http://localhost:3000/quiz_results/index'
+    driver.save_screenshot '/tmp/test.png'
+  end
 end
