@@ -30,6 +30,7 @@ gem 'parallel'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 5.0'
 gem 'webpacker', '>= 4.0.x'
+gem 'webshot'
 
 group :development, :test do
   gem 'capybara', '~> 2.13'
