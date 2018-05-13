@@ -31,3 +31,28 @@ create_table "choices", collate: "utf8_bin", comment: "" do |t|
   t.datetime :created_at
   t.datetime :updated_at
 end
+
+create_table "taggings", collate: "utf8_bin" do |t|
+  t.int  "tag_id"
+  t.varchar   "taggable_type"
+  t.int  "taggable_id"
+  t.varchar   "tagger_type"
+  t.int  "tagger_id"
+  t.varchar   "context",       limit: 128
+  t.datetime "created_at"
+  t.index ["context"], name: "index_taggings_on_context"
+  t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+  t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+  t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+  t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+  t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+end
+
+create_table "tags", collate: "utf8_bin" do |t|
+  t.varchar  "name"
+  t.int "taggings_count", default: 0
+  t.index ["name"], name: "index_tags_on_name", unique: true
+end
