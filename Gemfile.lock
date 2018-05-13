@@ -214,9 +214,6 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     settingslogic (2.0.9)
-    simple_form (4.0.0)
-      actionpack (> 4)
-      activemodel (> 4)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -290,7 +287,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   settingslogic
-  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
