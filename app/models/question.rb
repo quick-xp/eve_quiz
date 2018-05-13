@@ -19,7 +19,7 @@ class Question < ActiveRecord::Base
 
   has_many :choices
 
-  def create_questions(number: 10, min_difficult: 1, max_difficult: 5)
+  def self.create_questions(number: 10, min_difficult: 1, max_difficult: 5)
     categories = Question.tags_on(:categories)
 
     # カテゴリごとの問題個数
@@ -27,8 +27,17 @@ class Question < ActiveRecord::Base
     questions = []
 
     categories.each do |category|
-      c_questions = Question.where 
+      c_questions = Question.where("difficult >= ? and difficult <= ?", min_difficult, max_difficult).tagged_with(category.name)
+      c_questions.shuffle
+
+      count = 0
+      c_questions.each do |q|
+        break if count > categories_question_count
+        questions << q
+        count = count + 1
+      end
     end
 
+    questions.shuffle.last(number)
   end
 end
