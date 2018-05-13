@@ -32,4 +32,19 @@ class QuestionHistory < ActiveRecord::Base
 
     [uid, QuestionHistory.where(history_id: uid)]
   end
+
+  def update_user_answer(user_choice)
+    self.user_choice = user_choice
+    self.user_is_correct = false
+    choice_list.split(',').each do |choice|
+      c = Choice.find(choice)
+      if c.is_correct
+        if user_choice == c.id
+          self.user_is_correct = true
+        end
+      end
+    end
+
+    self.save
+  end
 end
