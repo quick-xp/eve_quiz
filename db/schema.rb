@@ -12,7 +12,15 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "answer_histories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
+  create_table "choices", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
+    t.integer "question_id", null: false
+    t.boolean "is_correct", null: false
+    t.string "choice", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "question_histories", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
     t.integer "question_id", null: false
     t.integer "number", null: false
     t.string "choice_list", null: false
@@ -20,14 +28,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "user_id"
     t.integer "user_choice"
     t.boolean "user_is_correct"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "choices", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
-    t.integer "question_id", null: false
-    t.boolean "is_correct", null: false
-    t.string "choice", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

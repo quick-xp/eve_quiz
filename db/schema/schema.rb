@@ -34,7 +34,7 @@ create_table "choices", collate: "utf8_bin", comment: "" do |t|
   t.datetime :updated_at
 end
 
-create_table "answer_histories", collate: "utf8_bin", comment: "" do |t|
+create_table "question_histories", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
   t.int :question_id
   t.int :number
