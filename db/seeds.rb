@@ -1,4 +1,4 @@
-require
+require 'csv'
 
 Question.delete_all
 header = true
@@ -15,4 +15,9 @@ CSV.foreach('db/test_data.csv') do |row|
   q.status = row[4]
   q.category_list = row[5]
   q.difficult = row[6]
+  q.choices.build(is_correct: true, choice: row[7])
+  q.choices.build(is_correct: false, choice: row[8])
+  q.choices.build(is_correct: false, choice: row[9])
+  q.choices.build(is_correct: false, choice: row[10])
+  q.save
 end
