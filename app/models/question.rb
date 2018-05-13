@@ -18,4 +18,17 @@ class Question < ActiveRecord::Base
   acts_as_taggable_on :categories
 
   has_many :choices
+
+  def create_questions(number: 10, min_difficult: 1, max_difficult: 5)
+    categories = Question.tags_on(:categories)
+
+    # カテゴリごとの問題個数
+    categories_question_count = (number / categories.count).to_i + 1
+    questions = []
+
+    categories.each do |category|
+      c_questions = Question.where 
+    end
+
+  end
 end
