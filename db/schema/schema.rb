@@ -17,6 +17,7 @@ create_table "questions", collate: "utf8_bin", comment: "" do |t|
   t.text :hint, null: true
   t.text :comment, null: true
   t.int :status, default: 0
+  t.int :difficult, default: 1
   t.int :created_by, null: true
 
   t.datetime :created_at

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "hint"
     t.text "comment"
     t.integer "status", default: 0, null: false
+    t.integer "difficult", default: 1, null: false
     t.integer "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
