@@ -28,7 +28,7 @@ gem 'delayed_job_active_record'
 gem 'activerecord-import'
 gem 'parallel'
 gem 'ransack'
-gem 'acts-as-taggable-on', '~> 4.0'
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'webpacker', '>= 4.0.x'
 
 group :development, :test do
