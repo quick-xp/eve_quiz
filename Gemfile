@@ -37,7 +37,6 @@ gem 'webpacker', '>= 4.0.x'
 gem 'capybara'
 gem 'poltergeist'
 gem 'webshot'
-gem 'screencap'
 
 group :development, :test do
   gem 'selenium-webdriver'
