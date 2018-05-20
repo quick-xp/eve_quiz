@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "question_results", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
+    t.integer "question_history_id", null: false
+    t.integer "user_id"
+    t.boolean "finished", default: false, null: false
+    t.integer "total_questions_count", default: 0, null: false
+    t.integer "user_correct_count", default: 0, null: false
+    t.text "comment", null: false
+    t.string "result_text", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
     t.text "question", null: false
     t.text "hint"

@@ -51,6 +51,20 @@ create_table "question_histories", collate: "utf8_bin", comment: "" do |t|
   t.datetime :updated_at
 end
 
+create_table "question_results", collate: "utf8_bin", comment: "" do |t|
+  t.int :id, primary_key: true, extra: :auto_increment
+  t.int :question_history_id
+  t.int :user_id, null: true
+  t.boolean :finished, default: false
+  t.int :total_questions_count, default: 0
+  t.int :user_correct_count, default: 0
+  t.text :comment
+  t.varchar :result_text
+
+  t.datetime :created_at
+  t.datetime :updated_at
+end
+
 create_table "taggings", collate: "utf8_bin" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
   t.int  "tag_id"
