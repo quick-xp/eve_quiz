@@ -3,7 +3,6 @@
 # Table name: question_results
 #
 #  id                    :integer          not null, primary key
-#  question_history_id   :integer          not null
 #  question_list_id      :integer          not null
 #  user_id               :integer
 #  finished              :boolean          default(FALSE), not null

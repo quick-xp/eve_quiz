@@ -50,6 +50,7 @@ create_table "question_histories", collate: "utf8_bin", comment: "" do |t|
   t.int :number
   t.varchar :choice_list
   t.varchar :history_id
+  t.int :question_result_id
   t.int :large_tag_id
   t.int :medium_tag_id, null: true
   t.int :small_tag_id, null: true
@@ -63,7 +64,6 @@ end
 
 create_table "question_results", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
-  t.int :question_history_id
   t.int :question_list_id
   t.int :user_id, null: true
   t.boolean :finished, default: false

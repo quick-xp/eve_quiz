@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "number", null: false
     t.string "choice_list", null: false
     t.string "history_id", null: false
+    t.integer "question_result_id", null: false
     t.integer "large_tag_id", null: false
     t.integer "medium_tag_id"
     t.integer "small_tag_id"
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "question_results", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
-    t.integer "question_history_id", null: false
     t.integer "question_list_id", null: false
     t.integer "user_id"
     t.boolean "finished", default: false, null: false
