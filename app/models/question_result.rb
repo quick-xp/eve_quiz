@@ -16,6 +16,6 @@
 #
 
 class QuestionResult < ActiveRecord::Base
-  belongs_to :question_history
+  has_many :question_histories
   belongs_to :question_list
 end

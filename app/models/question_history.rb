@@ -20,6 +20,7 @@
 
 class QuestionHistory < ActiveRecord::Base
   belongs_to :question
+  belongs_to :question_result
   belongs_to :large_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id
   belongs_to :medium_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
   belongs_to :small_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
