@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.boolean "finished", default: false, null: false
     t.integer "total_questions_count", default: 0, null: false
     t.integer "user_correct_count", default: 0, null: false
-    t.text "comment", null: false
-    t.string "result_text", null: false
+    t.text "comment"
+    t.string "result_text"
+    t.text "result_detail_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

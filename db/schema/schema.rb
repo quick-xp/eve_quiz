@@ -58,8 +58,9 @@ create_table "question_results", collate: "utf8_bin", comment: "" do |t|
   t.boolean :finished, default: false
   t.int :total_questions_count, default: 0
   t.int :user_correct_count, default: 0
-  t.text :comment
-  t.varchar :result_text
+  t.text :comment, null: true
+  t.varchar :result_text, null: true
+  t.text :result_detail_json, null: true
 
   t.datetime :created_at
   t.datetime :updated_at
