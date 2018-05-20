@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "number", null: false
     t.string "choice_list", null: false
     t.string "history_id", null: false
+    t.integer "large_tag", null: false
+    t.integer "medium_tag"
+    t.integer "small_tag"
     t.integer "user_id"
     t.integer "user_choice"
     t.boolean "user_is_correct"

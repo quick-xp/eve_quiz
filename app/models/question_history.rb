@@ -7,6 +7,9 @@
 #  number          :integer          not null
 #  choice_list     :string(255)      not null
 #  history_id      :string(255)      not null
+#  large_tag       :integer          not null
+#  medium_tag      :integer
+#  small_tag       :integer
 #  user_id         :integer
 #  user_choice     :integer
 #  user_is_correct :boolean
