@@ -11,6 +11,16 @@ create_table "ar_internal_metadata", collate: "utf8_bin", comment: "" do |t|
   t.datetime :updated_at
 end
 
+create_table "question_lists", collate: "utf8_bin", comment: "" do |t|
+  t.int :id, primary_key: true, extra: :auto_increment
+  t.text :title
+  t.text :comment, null: true
+  t.int :status, default: 0
+
+  t.datetime :created_at
+  t.datetime :updated_at
+end
+
 create_table "questions", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
   t.text :question
@@ -54,6 +64,7 @@ end
 create_table "question_results", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
   t.int :question_history_id
+  t.int :question_list_id
   t.int :user_id, null: true
   t.boolean :finished, default: false
   t.int :total_questions_count, default: 0
