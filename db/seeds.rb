@@ -1,5 +1,7 @@
 require 'csv'
 
+QuestionList.delete_all
+QuestionList.new(title: 'Eve Online 総合知識検定', status: 1).save
 Question.delete_all
 header = true
 CSV.foreach('db/test_data.csv') do |row|
