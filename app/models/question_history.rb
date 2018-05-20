@@ -19,6 +19,9 @@
 
 class QuestionHistory < ActiveRecord::Base
   belongs_to :question
+  belongs_to :large_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id
+  belongs_to :medium_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
+  belongs_to :small_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
 
   def self.create_question_history(questions: Question.create_questions, user_id: nil)
     uid = SecureRandom.uuid
@@ -29,9 +32,9 @@ class QuestionHistory < ActiveRecord::Base
       history.question = question
       history.number = i
       history.choice_list = question.choices.shuffle.map(&:id).join(",")
-      history.large_tag_id = question.large_tag
-      history.medium_tag_id = question.medium_tag
-      history.small_tag_id = question.small_tag
+      history.large_tag_id = question.large_tag_id
+      history.medium_tag_id = question.medium_tag_id
+      history.small_tag_id = question.small_tag_id
       history.user_id = user_id
       history.save
     end
