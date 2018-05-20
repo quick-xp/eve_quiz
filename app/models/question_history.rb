@@ -7,9 +7,9 @@
 #  number          :integer          not null
 #  choice_list     :string(255)      not null
 #  history_id      :string(255)      not null
-#  large_tag       :integer          not null
-#  medium_tag      :integer
-#  small_tag       :integer
+#  large_tag_id    :integer          not null
+#  medium_tag_id   :integer
+#  small_tag_id    :integer
 #  user_id         :integer
 #  user_choice     :integer
 #  user_is_correct :boolean
@@ -29,6 +29,9 @@ class QuestionHistory < ActiveRecord::Base
       history.question = question
       history.number = i
       history.choice_list = question.choices.shuffle.map(&:id).join(",")
+      history.large_tag_id = question.large_tag
+      history.medium_tag_id = question.medium_tag
+      history.small_tag_id = question.small_tag
       history.user_id = user_id
       history.save
     end

@@ -18,6 +18,7 @@ class Question < ActiveRecord::Base
   acts_as_taggable_on :categories
 
   has_many :choices
+  attr_accessor :large_tag_id, :medium_tag_id, :small_tag_id
 
   def self.create_questions(number: 10, min_difficult: 1, max_difficult: 5)
     categories = Question.tags_on(:categories)
@@ -33,6 +34,7 @@ class Question < ActiveRecord::Base
       count = 0
       c_questions.each do |q|
         break if count > categories_question_count
+        q.large_tag_id = category.id
         questions << q
         count = count + 1
       end
