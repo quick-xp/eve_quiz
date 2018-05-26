@@ -2,6 +2,10 @@ import api from '../lib/api';
 
 export const FETCH_QUIZ_QUESTION = "FETCH_QUIZ_QUESTION";
 export const SET_QUIZ_LISTS = "SET_QUIZ_LISTS";
+export const FETCH_QUIZ_REQUEST = "FETCH_QUIZ_REQUEST";
+export const FETCH_QUIZ_SUCCESS = "FETCH_QUIZ_SUCCESS";
+export const FETCH_QUIZ_FAIL = "FETCH_QUIZ_FAIL";
+
 
 export function fetchQuestion(questionSeriesNo) {
   return {
@@ -37,11 +41,11 @@ export function fetchQuizFail(error) {
   };
 }
 
-export function fetchQuiz(seasonSlug) {
+export function fetchQuiz(historyId) {
   return (dispatch, getState) => {
     dispatch(fetchQuizRequest());
     api(getState)
-      .get(`/api/seasons/${seasonSlug}/ranking_makers/edit`)
+      .get(`/api/quiz?${historyId}`)
       .then(response => {
         dispatch(fetchQuizSuccess(response.data));
       })
