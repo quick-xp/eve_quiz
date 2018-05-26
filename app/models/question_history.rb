@@ -28,17 +28,27 @@ class QuestionHistory < ActiveRecord::Base
   def self.create_question_history(questions: Question.create_questions, user_id: nil)
     uid = SecureRandom.uuid
 
+    result = QuestionResult.new
+    result.attributes = {
+      question_list_id: QuestionList.first.id,
+      user_id: user_id,
+      total_questions_count: questions.length,
+    }
+    result.save!
+    result.reload
+
     questions.each_with_index do |question, i|
       history = QuestionHistory.new
       history.history_id = uid
       history.question = question
+      history.question_result = result
       history.number = i
       history.choice_list = question.choices.shuffle.map(&:id).join(",")
       history.large_tag_id = question.large_tag_id
       history.medium_tag_id = question.medium_tag_id
       history.small_tag_id = question.small_tag_id
       history.user_id = user_id
-      history.save
+      history.save!
     end
 
     [uid, QuestionHistory.where(history_id: uid)]
