@@ -5,7 +5,7 @@ import QuizImage from './quiz_image';
 export default class QuizComponent extends React.Component {
   static propTypes = {
     questionSeriesNo: PropTypes.number.isRequired,
-    quizLists: PropTypes.array.isRequired
+    historyId: PropTypes.string.isRequired
   };
 
   constructor(props) {
@@ -14,7 +14,7 @@ export default class QuizComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchQuestion(this.props.questionSeriesNo);
-    this.props.setQuizLists(this.props.quizLists)
+    this.props.setQuizLists(this.props.historyId)
   }
 
   render() {

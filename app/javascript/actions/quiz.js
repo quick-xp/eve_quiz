@@ -8,9 +8,9 @@ export function fetchQuestion(questionSeriesNo) {
   };
 }
 
-export function setQuizLists(quizLists) {
+export function setQuizLists(historyId) {
   return {
     type: SET_QUIZ_LISTS,
-    quizLists
+    historyId
   };
 }

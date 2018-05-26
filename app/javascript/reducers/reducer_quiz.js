@@ -11,8 +11,8 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_QUIZ_QUESTION:
       return { ...state, question: "No2" };
     case SET_QUIZ_LISTS:
-      debugger;
       return Object.assign({}, state, {
+        historyId: action.historyId,
         quizLists: action.quizLists
       });
     default:
