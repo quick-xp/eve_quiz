@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import QuizComponent from '../components/quiz_component';
-import { fetchQuestion } from '../actions/quiz';
+import { fetchQuestion, setQuizLists } from '../actions/quiz';
 
 const mapStateToProps = (state) => {
   return { 
@@ -11,6 +11,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     fetchQuestion(questionSeriesNo) {
       dispatch(fetchQuestion(questionSeriesNo));
+    },
+    setQuizLists(quizLists) {
+      dispatch(setQuizLists(quizLists));
     }
   });
 
