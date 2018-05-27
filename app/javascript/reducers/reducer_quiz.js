@@ -3,9 +3,10 @@ import {
 } from "../actions/quiz";
 
 const INITIAL_STATE = {
-  question_no: 1,
+  quizNo: 1,
   loading: false,
-  quizLists: []
+  quizTotalCount: 1,
+  quizLists: [],
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -15,7 +16,8 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, loading: true}
     case FETCH_QUIZ_SUCCESS:
       return Object.assign({}, state, {
-        quizLists: action.results,
+        quizTotalCount: action.results.total,
+        quizLists: action.results.quiz,
         loading: false
       });
     case FETCH_QUIZ_FAIL:

@@ -17,18 +17,18 @@ export default class QuizComponent extends React.Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { quizLists, quizNo, quizTotalCount } = this.props;
 
     return (
       <div className="row">
         <div className='col-md-12'>
-          <p> No1 </p>
+          <p> No. {quizNo} / {quizTotalCount}</p>
         </div>
         <div className='col-md-12'>
           <div className='col-md-4'><QuizImage/></div>
         </div>
         <div className='col-md-12'>
-          <p> この船の名前は何？ </p>
+          <p> {quizLists[questionNo]} </p>
         </div>
         <div className='col-md-12'>
           No.1
