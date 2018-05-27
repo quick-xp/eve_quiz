@@ -69,7 +69,7 @@ export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
       choice_id: choiceId,
     };
     api(getState)
-      .put(`/api/quiz_user_answer`, requestBody)
+      .put(`/api/quiz_user_answer/${questionHistoryId}`, requestBody)
       .then(response => {
         dispatch(choiceAnswerSuccess(response.data));
       })

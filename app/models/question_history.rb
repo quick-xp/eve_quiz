@@ -66,6 +66,6 @@ class QuestionHistory < ActiveRecord::Base
       end
     end
 
-    self.save
+    self
   end
 end
