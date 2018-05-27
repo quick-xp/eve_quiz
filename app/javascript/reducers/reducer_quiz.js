@@ -1,34 +1,25 @@
 import { 
-  FETCH_QUIZ_QUESTION, SET_QUIZ_LISTS,
   FETCH_QUIZ_REQUEST, FETCH_QUIZ_SUCCESS, FETCH_QUIZ_FAIL
 } from "../actions/quiz";
 
 const INITIAL_STATE = {
-  question: "No1",
+  question_no: 1,
+  loading: false,
   quizLists: []
 };
 
 export default function(state = INITIAL_STATE, action) {
   let error;
   switch (action.type) {
-    case FETCH_QUIZ_QUESTION:
-      return { ...state, question: "No2" };
-    case SET_QUIZ_LISTS:
-      return Object.assign({}, state, {
-        historyId: action.historyId,
-        quizLists: action.quizLists
-      });
     case FETCH_QUIZ_REQUEST:
-      state = state.set('loading', true);
-      return state;
+      return { ...state, loading: true}
     case FETCH_QUIZ_SUCCESS:
-      state = state.set('loading', false);
       return Object.assign({}, state, {
-        quizLists: action.results
+        quizLists: action.results,
+        loading: false
       });
     case FETCH_QUIZ_FAIL:
-      state = state.set('loading', false);
-      return state;
+      return { ...state, loading: false}
     default:
       return state;
   }
