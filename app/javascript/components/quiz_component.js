@@ -32,10 +32,18 @@ export default class QuizComponent extends React.Component {
     if (quiz && quiz.choice) {
       return quiz.choice.map(c => {
         return (
-          <button type="button" className="btn btn-primary btn-lg btn-block">
-            { c.choice }
+          <button
+            type="button"
+            className="btn btn-primary btn-lg btn-block"
+            onClick={_ =>
+              this.props.choiceAnswer(
+                c.id
+              )
+            }
+          >
+            {c.choice}
           </button>
-        )
+        );
       });
     }
   }
@@ -58,9 +66,7 @@ export default class QuizComponent extends React.Component {
           </div>
         </div>
         <div className="col-md-12">{this.renderQuestion(quiz)}</div>
-        <div className="col-md-12">
-          {this.renderChoice(quiz)}
-        </div>
+        <div className="col-md-12">{this.renderChoice(quiz)}</div>
         <div className="col-md-12">{this.renderHint(quiz)}</div>
       </div>
     );

@@ -3,6 +3,9 @@ import api from '../lib/api';
 export const FETCH_QUIZ_REQUEST = "FETCH_QUIZ_REQUEST";
 export const FETCH_QUIZ_SUCCESS = "FETCH_QUIZ_SUCCESS";
 export const FETCH_QUIZ_FAIL = "FETCH_QUIZ_FAIL";
+export const UPDATE_CHOICE_ANSWER_REQUEST = "UPDATE_CHOICE_ANSWER_REQUEST";
+export const UPDATE_CHOICE_ANSWER_SUCCESS = "UPDATE_CHOICE_ANSWER_SUCCESS";
+export const UPDATE_CHOICE_ANSWER_FAIL = "UPDATE_CHOICE_ANSWER_FAIL";
 
 export function fetchQuizRequest() {
   return {
@@ -36,4 +39,42 @@ export function fetchQuiz(historyId) {
         dispatch(fetchQuizFail(error));
       });
   };
+}
+
+export function updateChoiceAnswerRequest() {
+  return {
+    type: UPDATE_CHOICE_ANSWER_REQUEST
+  };
+}
+
+export function updateChoiceAnswerSuccess(results) {
+  return {
+    type: UPDATE_CHOICE_ANSWER_SUCCESS,
+    results
+  };
+}
+
+export function updateChoiceAnswerFail(error) {
+  return {
+    type: UPDATE_CHOICE_ANSWER_FAIL,
+    error
+  };
+}
+
+export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
+  return (dispatch, getState) => {
+    updateChoiceAnswerRequest();
+    const requestBody = {
+      history_id: historyId,
+      choice_id: choiceId,
+    };
+    api(getState)
+      .put(`/api/quiz_user_answer`, requestBody)
+      .then(response => {
+        dispatch(choiceAnswerSuccess(response.data));
+      })
+      .catch(error => {
+        dispatch(choiceAnswerFail(error));
+      });
+  };  
 }

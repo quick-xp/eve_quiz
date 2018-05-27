@@ -10,7 +10,7 @@ json.quiz do
 
     json.choice do
       json.array!(quiz.choice_list.split(',')) do |choice|
-        json.(Choice.find(choice), :choice)
+        json.(Choice.find(choice), :id, :choice)
       end
     end
   end
