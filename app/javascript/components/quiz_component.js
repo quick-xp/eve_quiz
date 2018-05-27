@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import QuizImage from './quiz_image';
+import React from "react";
+import PropTypes from "prop-types";
+import QuizImage from "./quiz_image";
 
 export default class QuizComponent extends React.Component {
   static propTypes = {
@@ -13,32 +13,55 @@ export default class QuizComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchQuiz(this.props.historyId)
+    this.props.fetchQuiz(this.props.historyId);
+  }
+
+  renderQuestion(quiz) {
+    if (quiz) {
+      return <p> 問題: {quiz.question} </p>;
+    }
+  }
+
+  renderHint(quiz) {
+    if (quiz && quiz.hint) {
+      return <p> ヒント: {quiz.hint} </p>;
+    }
+  }
+
+  renderChoice(quiz) {
+    if (quiz && quiz.choice) {
+      return quiz.choice.map(c => {
+        return (
+          <button type="button" className="btn btn-primary btn-lg btn-block">
+            { c.choice }
+          </button>
+        )
+      });
+    }
   }
 
   render() {
     const { quizLists, quizNo, quizTotalCount } = this.props;
+    const quiz = quizLists[quizNo - 1];
 
     return (
       <div className="row">
-        <div className='col-md-12'>
-          <p> No. {quizNo} / {quizTotalCount}</p>
+        <div className="col-md-12">
+          <p>
+            {" "}
+            No. {quizNo} / {quizTotalCount}
+          </p>
         </div>
-        <div className='col-md-12'>
-          <div className='col-md-4'><QuizImage/></div>
+        <div className="col-md-12">
+          <div className="col-md-4">
+            <QuizImage />
+          </div>
         </div>
-        <div className='col-md-12'>
-          <p> {quizLists[questionNo]} </p>
+        <div className="col-md-12">{this.renderQuestion(quiz)}</div>
+        <div className="col-md-12">
+          {this.renderChoice(quiz)}
         </div>
-        <div className='col-md-12'>
-          No.1
-          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
-          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
-          <button type="button" className="btn btn-primary btn-lg btn-block">Machariel（マカリエル）</button>
-        </div>
-        <div className='col-md-12'>
-          <p> ヒント: ヒントがある場合はここに表示されます。 </p>
-        </div>
+        <div className="col-md-12">{this.renderHint(quiz)}</div>
       </div>
     );
   }
