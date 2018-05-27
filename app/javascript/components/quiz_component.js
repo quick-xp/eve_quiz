@@ -59,7 +59,6 @@ export default class QuizComponent extends React.Component {
       <div className="row">
         <div className="col-md-12">
           <p>
-            {" "}
             No. {quizNo} / {quizTotalCount}
           </p>
         </div>

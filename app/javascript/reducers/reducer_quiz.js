@@ -28,9 +28,9 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_QUIZ_FAIL:
       return { ...state, loading: false };
     case UPDATE_CHOICE_ANSWER_REQUEST:
-      return { ...state, quizNo: quizNo + 1, loading: true };
+      return { ...state, loading: true };
     case UPDATE_CHOICE_ANSWER_SUCCESS:
-      return { ...state, loading: false };
+      return { ...state, quizNo: state.quizNo + 1, loading: true };
     case UPDATE_CHOICE_ANSWER_FAIL:
       return { ...state, loading: false };
     default:

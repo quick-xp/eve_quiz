@@ -63,7 +63,7 @@ export function updateChoiceAnswerFail(error) {
 
 export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
   return (dispatch, getState) => {
-    updateChoiceAnswerRequest();
+    dispatch(updateChoiceAnswerRequest());
     const requestBody = {
       history_id: historyId,
       choice_id: choiceId,
