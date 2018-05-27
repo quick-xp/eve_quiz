@@ -1,4 +1,4 @@
-import api from '../lib/api';
+import api from "../lib/api";
 
 export const FETCH_QUIZ_REQUEST = "FETCH_QUIZ_REQUEST";
 export const FETCH_QUIZ_SUCCESS = "FETCH_QUIZ_SUCCESS";
@@ -71,10 +71,10 @@ export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
     api(getState)
       .put(`/api/quiz_user_answer/${questionHistoryId}`, requestBody)
       .then(response => {
-        dispatch(choiceAnswerSuccess(response.data));
+        dispatch(updateChoiceAnswerSuccess(response.data));
       })
       .catch(error => {
-        dispatch(choiceAnswerFail(error));
+        dispatch(updateChoiceAnswerFail(error));
       });
-  };  
+  };
 }

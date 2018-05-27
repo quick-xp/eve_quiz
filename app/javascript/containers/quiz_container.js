@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import QuizComponent from '../components/quiz_component';
-import { fetchQuestion, fetchQuiz } from '../actions/quiz';
+import { fetchQuiz, updateChoiceAnswer } from '../actions/quiz';
 
 const mapStateToProps = (state) => {
   return { 
@@ -13,6 +13,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     fetchQuiz(historyId) {
       dispatch(fetchQuiz(historyId));
+    },
+    updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
+      dispatch(updateChoiceAnswer(questionHistoryId, historyId, choiceId));
     }
   });
 

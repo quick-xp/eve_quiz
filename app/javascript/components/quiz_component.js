@@ -33,10 +33,13 @@ export default class QuizComponent extends React.Component {
       return quiz.choice.map(c => {
         return (
           <button
+            key={`choice-button-${c.id}`}
             type="button"
             className="btn btn-primary btn-lg btn-block"
             onClick={_ =>
-              this.props.choiceAnswer(
+              this.props.updateChoiceAnswer(
+                quiz.id,
+                this.props.historyId,
                 c.id
               )
             }

@@ -2,7 +2,7 @@ class Api::QuizUserAnswerController < Api::ApiController
 
   def update
     @question_history = QuestionHistory.find(params[:id])
-    if @question_history.history_id != params[:history_id]
+    if @question_history.history_id.to_s != params[:history_id]
       render json: { result: 'error', message: 'permittion denied' }
     end
 
