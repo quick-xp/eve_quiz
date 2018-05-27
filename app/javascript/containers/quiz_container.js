@@ -12,8 +12,8 @@ const mapDispatchToProps = dispatch => ({
     fetchQuestion(questionSeriesNo) {
       dispatch(fetchQuestion(questionSeriesNo));
     },
-    setQuizLists(historyId) {
-      dispatch(setQuizLists(historyId));
+    fetchQuiz(historyId) {
+      dispatch(fetchQuiz(historyId));
     }
   });
 

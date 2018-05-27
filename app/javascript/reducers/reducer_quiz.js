@@ -1,4 +1,7 @@
-import { FETCH_QUIZ_QUESTION, SET_QUIZ_LISTS } from "../actions/quiz";
+import { 
+  FETCH_QUIZ_QUESTION, SET_QUIZ_LISTS,
+  FETCH_QUIZ_REQUEST, FETCH_QUIZ_SUCCESS, FETCH_QUIZ_FAIL
+} from "../actions/quiz";
 
 const INITIAL_STATE = {
   question: "No1",
@@ -15,6 +18,17 @@ export default function(state = INITIAL_STATE, action) {
         historyId: action.historyId,
         quizLists: action.quizLists
       });
+    case FETCH_QUIZ_REQUEST:
+      state = state.set('loading', true);
+      return state;
+    case FETCH_QUIZ_SUCCESS:
+      state = state.set('loading', false);
+      return Object.assign({}, state, {
+        quizLists: action.results
+      });
+    case FETCH_QUIZ_FAIL:
+      state = state.set('loading', false);
+      return state;
     default:
       return state;
   }

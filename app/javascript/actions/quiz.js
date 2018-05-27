@@ -1,7 +1,6 @@
 import api from '../lib/api';
 
 export const FETCH_QUIZ_QUESTION = "FETCH_QUIZ_QUESTION";
-export const SET_QUIZ_LISTS = "SET_QUIZ_LISTS";
 export const FETCH_QUIZ_REQUEST = "FETCH_QUIZ_REQUEST";
 export const FETCH_QUIZ_SUCCESS = "FETCH_QUIZ_SUCCESS";
 export const FETCH_QUIZ_FAIL = "FETCH_QUIZ_FAIL";
@@ -11,13 +10,6 @@ export function fetchQuestion(questionSeriesNo) {
   return {
     type: FETCH_QUIZ_QUESTION,
     questionSeriesNo
-  };
-}
-
-export function setQuizLists(historyId) {
-  return {
-    type: SET_QUIZ_LISTS,
-    historyId
   };
 }
 

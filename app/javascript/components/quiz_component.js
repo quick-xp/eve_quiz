@@ -14,7 +14,7 @@ export default class QuizComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchQuestion(this.props.questionSeriesNo);
-    this.props.setQuizLists(this.props.historyId)
+    this.props.fetchQuiz(this.props.historyId)
   }
 
   render() {
