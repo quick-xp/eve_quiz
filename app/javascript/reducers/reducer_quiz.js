@@ -32,10 +32,13 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, loading: true };
     case UPDATE_CHOICE_ANSWER_SUCCESS:
       let isCompleted = false;
+      let nextquizNo = state.quizNo;
       if (state.quizNo + 1 > state.quizTotalCount) {
         isCompleted = true;
+      } else {
+        nextquizNo = nextquizNo + 1;
       }
-      return { ...state, quizNo: state.quizNo + 1, loading: true, isCompleted: isCompleted };
+      return { ...state, quizNo: nextquizNo, loading: false, isCompleted: isCompleted };
     case UPDATE_CHOICE_ANSWER_FAIL:
       return { ...state, loading: false };
     default:
