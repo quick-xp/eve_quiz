@@ -68,4 +68,11 @@ class QuestionHistory < ActiveRecord::Base
 
     self
   end
+
+  def complete
+    question_result = self.question_result
+    if question_result.total_questions_count <= self.number + 1
+      question_result.complete
+    end
+  end
 end

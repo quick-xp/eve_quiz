@@ -7,6 +7,7 @@ class Api::QuizUserAnswerController < Api::ApiController
     end
 
     @question_history.update_user_answer(params[:choice_id])
+    @question_history.complete
     if @question_history.save
       render json: { result: 'success' }
     else

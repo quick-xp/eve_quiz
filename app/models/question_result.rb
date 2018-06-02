@@ -18,4 +18,9 @@
 class QuestionResult < ActiveRecord::Base
   has_many :question_histories
   belongs_to :question_list
+
+  def complete
+    self.finished = true
+    self.save
+  end
 end
