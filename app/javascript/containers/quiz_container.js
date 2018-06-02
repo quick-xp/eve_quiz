@@ -6,7 +6,9 @@ const mapStateToProps = (state) => {
   return { 
     quizLists: state.quiz.quizLists,
     quizNo: state.quiz.quizNo,
-    quizTotalCount: state.quiz.quizTotalCount
+    quizTotalCount: state.quiz.quizTotalCount,
+    isCompleted: state.quiz.isCompleted,
+    loading: state.loading
   };
 }
 

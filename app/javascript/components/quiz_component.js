@@ -53,10 +53,18 @@ export default class QuizComponent extends React.Component {
 
   render() {
     const { quizLists, quizNo, quizTotalCount } = this.props;
+    const { isCompleted } = this.props;
+    let hidden = '';
+    if (isCompleted) {
+      location.href = '/quiz_results/index';
+    }
+    if (this.props.loading) {
+      hidden = 'hidden';
+    }
     const quiz = quizLists[quizNo - 1];
 
     return (
-      <div className="row">
+      <div className={`"row" ${hidden}`}>
         <div className="col-md-12">
           <p>
             No. {quizNo} / {quizTotalCount}

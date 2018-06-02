@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   quizNo: 1,
   loading: false,
   quizTotalCount: 1,
-  quizLists: []
+  quizLists: [],
+  isCompleted: false
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -30,7 +31,11 @@ export default function(state = INITIAL_STATE, action) {
     case UPDATE_CHOICE_ANSWER_REQUEST:
       return { ...state, loading: true };
     case UPDATE_CHOICE_ANSWER_SUCCESS:
-      return { ...state, quizNo: state.quizNo + 1, loading: true };
+      let isCompleted = false;
+      if (state.quizNo + 1 > state.quizTotalCount) {
+        isCompleted = true;
+      }
+      return { ...state, quizNo: state.quizNo + 1, loading: true, isCompleted: isCompleted };
     case UPDATE_CHOICE_ANSWER_FAIL:
       return { ...state, loading: false };
     default:
