@@ -56,7 +56,7 @@ export default class QuizComponent extends React.Component {
     const { isCompleted } = this.props;
     let hidden = '';
     if (isCompleted) {
-      location.href = '/quiz_results/index';
+      location.href = `/quiz_results/${this.props.historyId}`;
     }
     if (this.props.loading) {
       hidden = 'hidden';
