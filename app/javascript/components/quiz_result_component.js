@@ -16,6 +16,10 @@ export default class QuizResultComponent extends React.Component {
     this.props.fetchQuizResult(this.props.historyId);
   }
 
+  handleLink = e => {
+    e.stopPropagation();
+  }
+
   createRadarData(resultDetails) {
     const labels = resultDetails.map(x => x.tag_name) || [];
     const datas = resultDetails.map(x => x.count) || [];
@@ -111,6 +115,9 @@ export default class QuizResultComponent extends React.Component {
               <i className="fa fa-twitter fa-1x" />
               結果をツイートする
             </button>
+            <a className="btn btn-primary btn-lg btn-block" href="/quiz_home/index" onClick={this.handleLink}>
+              メイン画面に戻る
+            </a>
           </div>
         </div>
       </div>
