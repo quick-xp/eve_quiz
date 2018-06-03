@@ -39,13 +39,15 @@ export default class QuizResultComponent extends React.Component {
   render() {
     let radarMax = 1;
     if (this.props.totalQuestionCount && this.props.resultDetails) {
-      radarMax = Math.ceil(this.props.totalQuestionCount / this.props.resultDetails.length);
+      radarMax = Math.ceil(
+        this.props.totalQuestionCount / this.props.resultDetails.length
+      );
     }
     const radarOptions = {
       scale: {
         ticks: {
-            beginAtZero: true,
-            max: radarMax
+          beginAtZero: true,
+          max: radarMax
         }
       }
     };
@@ -79,21 +81,27 @@ export default class QuizResultComponent extends React.Component {
               role="alert"
               style={{ textAlign: "center" }}
             >
-              得点　{this.props.userCorrectCount}/{this.props.totalQuestionCount}
+              得点　{this.props.userCorrectCount}/{
+                this.props.totalQuestionCount
+              }
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col" style={{ backgroundColor: "#ffffff" }}>
-            <Radar data={this.createRadarData(this.props.resultDetails)} height={200} options={radarOptions}/>
+          <div className="col-md-12">
+            <div className="col" style={{ backgroundColor: "#ffffff" }}>
+              <Radar
+                data={this.createRadarData(this.props.resultDetails)}
+                height={200}
+                options={radarOptions}
+              />
+            </div>
           </div>
         </div>
         <div className="row">
           <div className="col-md-12">
             Advise <br />
-            <p>
-              {this.props.comment}
-            </p>
+            <p>{this.props.comment}</p>
           </div>
         </div>
         <div className="row">

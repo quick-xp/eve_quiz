@@ -71,13 +71,13 @@ export default class QuizComponent extends React.Component {
           </p>
         </div>
         <div className="col-md-12">
-          <div className="col-md-4">
+          <div className="col-md-12">
             <QuizImage />
           </div>
         </div>
         <div className="col-md-12">{this.renderQuestion(quiz)}</div>
         <div className="col-md-12">{this.renderChoice(quiz)}</div>
-        <div className="col-md-12">{this.renderHint(quiz)}</div>
+        <div className="col-md-12" style={{marginTop: '4px'}}>{this.renderHint(quiz)}</div>
       </div>
     );
   }
