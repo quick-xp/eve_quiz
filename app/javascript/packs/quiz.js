@@ -8,11 +8,10 @@ const appStore = configureStore();
 
 class QuizApp extends React.Component {
   render() {
-    const { store } = this.props;
-
+    const { store, history_id } = this.props;
     return (
       <Provider store={store}>
-        <QuizContainer questionSeriesNo={1} />
+        <QuizContainer questionSeriesNo={1} historyId={history_id} />
       </Provider>
     );
   }

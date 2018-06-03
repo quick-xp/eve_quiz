@@ -20,6 +20,7 @@
 tags
 
 .DS_Store
+.vscode/
 
 # public data
 public/uploads/

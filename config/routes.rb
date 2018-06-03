@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  get 'pages/index'
+  get 'quiz_home/index'
+  get 'quiz_results/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :quiz, only: [:show]
+
+  namespace :api, defaults: { format: :json } do
+    resources :quiz, only: [:index, :update]
+    resources :quiz_user_answer, only: [:update]
+  end
+
 end

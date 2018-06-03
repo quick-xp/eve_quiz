@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+QuestionList.delete_all
+QuestionList.new(title: 'Eve Online 総合知識検定', status: 1).save
+Question.delete_all
+header = true
+CSV.foreach('db/test_data.csv') do |row|
+  if header
+    header = false
+    next
+  end
+
+  q = Question.new
+  q.question = row[0]
+  q.hint = row[1]
+  q.comment = row[2]
+  q.status = row[4]
+  q.category_list = row[5]
+  q.difficult = row[6]
+  q.choices.build(is_correct: true, choice: row[7])
+  q.choices.build(is_correct: false, choice: row[8])
+  q.choices.build(is_correct: false, choice: row[9])
+  q.choices.build(is_correct: false, choice: row[10])
+  q.save
+end

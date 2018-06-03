@@ -20,7 +20,6 @@ gem 'faraday'
 gem 'convergence'
 gem 'kaminari'
 gem 'settingslogic'
-gem 'simple_form'
 gem 'active_hash'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
@@ -29,11 +28,16 @@ gem 'delayed_job_active_record'
 gem 'activerecord-import'
 gem 'parallel'
 gem 'ransack'
-
+gem 'acts-as-taggable-on', '~> 5.0'
 gem 'webpacker', '>= 4.0.x'
 
+# web shot
+# brew install selenium-server-standalone
+# brew cask install chromedriver
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
+
 group :development, :test do
-  gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry'
   gem 'pry-byebug'
