@@ -3,22 +3,6 @@ import PropTypes from "prop-types";
 import { Radar } from "react-chartjs-2";
 import { Line } from "react-chartjs-2";
 
-const data = {
-  labels: ["PvP", "PvE", "生産", "交易", "探検", "その他"],
-  datasets: [
-    {
-      label: "分野毎の知識",
-      backgroundColor: "rgba(179,181,198,0.2)",
-      borderColor: "rgba(179,181,198,1)",
-      pointBackgroundColor: "rgba(179,181,198,1)",
-      pointBorderColor: "#fff",
-      pointHoverBackgroundColor: "#fff",
-      pointHoverBorderColor: "rgba(179,181,198,1)",
-      data: [10, 12, 8, 15, 2, 8]
-    }
-  ]
-};
-
 export default class QuizResultComponent extends React.Component {
   static propTypes = {
     historyId: PropTypes.string.isRequired
@@ -32,8 +16,39 @@ export default class QuizResultComponent extends React.Component {
     this.props.fetchQuizResult(this.props.historyId);
   }
 
+  createRadarData(resultDetails) {
+    const labels = resultDetails.map(x => x.tag_name) || [];
+    const datas = resultDetails.map(x => x.count) || [];
+    return {
+      labels: labels,
+      datasets: [
+        {
+          label: "分野毎の知識",
+          backgroundColor: "rgba(255,99,132, 0.2)",
+          borderColor: "rgba(255,99,132, 1)",
+          pointBackgroundColor: "#ff6384",
+          pointBorderColor: "rgb(255,99,132)",
+          pointHoverBackgroundColor: "",
+          pointHoverBorderColor: "rgb(255,99,132)",
+          data: datas
+        }
+      ]
+    };
+  }
+
   render() {
-    const {} = this.props;
+    let radarMax = 1;
+    if (this.props.totalQuestionCount && this.props.resultDetails) {
+      radarMax = Math.ceil(this.props.totalQuestionCount / this.props.resultDetails.length);
+    }
+    const radarOptions = {
+      scale: {
+        ticks: {
+            beginAtZero: true,
+            max: radarMax
+        }
+      }
+    };
 
     return (
       <div>
@@ -70,7 +85,7 @@ export default class QuizResultComponent extends React.Component {
         </div>
         <div className="row">
           <div className="col" style={{ backgroundColor: "#ffffff" }}>
-            <Radar data={data} height={200} />
+            <Radar data={this.createRadarData(this.props.resultDetails)} height={200} options={radarOptions}/>
           </div>
         </div>
         <div className="row">
