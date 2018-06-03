@@ -1,4 +1,5 @@
 class QuizResultsController < ApplicationController
-  def index
+  def show
+    @history_id = params[:id]
   end
 end

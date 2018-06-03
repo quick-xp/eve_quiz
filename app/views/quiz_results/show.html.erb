@@ -1,5 +1,5 @@
 <div id="component-quiz-result"></div>
-<div id="server-side-contents">
-  <%= {test: "hoge"}.to_json %>
+<div id="server-side-contents" hidden>
+  <%= {history_id: @history_id}.to_json %>
 </div>
 <%= javascript_pack_tag 'quiz_result' %>
