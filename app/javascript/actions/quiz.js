@@ -9,6 +9,10 @@ export const UPDATE_CHOICE_ANSWER_FAIL = "UPDATE_CHOICE_ANSWER_FAIL";
 export const FETCH_QUIZ_RESULT_REQUEST = "FETCH_QUIZ_RESULT_REQUEST";
 export const FETCH_QUIZ_RESULT_SUCCESS = "FETCH_QUIZ_RESULT_SUCCESS";
 export const FETCH_QUIZ_RESULT_FAIL = "FETCH_QUIZ_RESULT_FAIL";
+export const CLEAR_HISTORY_ID = "CLEAR_HISTORY_ID";
+export const CREATE_QUIZ_REQUEST = "CREATE_QUIZ_REQUEST";
+export const CREATE_QUIZ_SUCCESS = "CREATE_QUIZ_SUCCESS";
+export const CREATE_QUIZ_FAIL = "CREATE_QUIZ_FAIL";
 
 export function fetchQuizRequest() {
   return {
@@ -112,6 +116,49 @@ export function fetchQuizResult(historyId) {
       })
       .catch(error => {
         dispatch(fetchQuizResultFail(error));
+      });
+  };
+}
+
+export function clearHistoryId() {
+  return {
+    type: CLEAR_HISTORY_ID
+  };
+}
+
+export function createQuizRequest() {
+  return {
+    type: CREATE_QUIZ_REQUEST
+  };
+}
+
+export function createQuizSuccess(results) {
+  return {
+    type: CREATE_QUIZ_SUCCESS,
+    results
+  };
+}
+
+export function createQuizFail(error) {
+  return {
+    type: CREATE_QUIZ_FAIL,
+    error
+  };
+}
+
+export function createQuiz(quizListId) {
+  return (dispatch, getState) => {
+    dispatch(createQuizRequest());
+    const requestBody = {
+      question_list_id: quizListId
+    };
+    api(getState)
+      .post(`/api/quiz/`, requestBody)
+      .then(response => {
+        dispatch(createQuizSuccess(response.data));
+      })
+      .catch(error => {
+        dispatch(createQuizFail(error));
       });
   };
 }

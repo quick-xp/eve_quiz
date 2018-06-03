@@ -13,22 +13,11 @@ export default class QuizListShowComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.props.clearHistoryId();
   }
 
   renderStartButton(isLogin) {
     if (isLogin) {
-      return (
-        <div className="col-md-12" style={{ marginTop: "18px" }}>
-        <a
-          className="btn btn-primary btn-lg btn-block"
-          href="#"
-          role="button"
-        >
-          問題を開始する
-        </a>
-      </div>
-      )
-    } else {
       return (
         <div className="col-md-12" style={{ marginTop: "18px" }}>
           <a
@@ -36,9 +25,21 @@ export default class QuizListShowComponent extends React.Component {
             href="#"
             role="button"
           >
+            問題を開始する
+          </a>
+        </div>
+      );
+    } else {
+      return (
+        <div className="col-md-12" style={{ marginTop: "18px" }}>
+          <a
+            className="btn btn-primary btn-lg btn-block"
+            role="button"
+            onClick={_ => this.props.createQuiz(1)}
+          >
             ログインせずに問題を開始する
           </a>
-          <p style={{ fontSize: "12px", marginTop: '8px'}}>
+          <p style={{ fontSize: "12px", marginTop: "8px" }}>
             ログインしていると結果が後から見られます
           </p>
           <a
@@ -59,28 +60,45 @@ export default class QuizListShowComponent extends React.Component {
       );
     }
   }
-  render() {
-    const { title, comment, isLogin } = this.props;
 
-    let hidden = "";
-    if (!isLogin) {
-      hidden = "hidden";
-    }
-
+  renderMain() {
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <div
-            className="alert alert-primary"
-            role="alert"
-            style={{ textAlign: "center" }}
-          >
-            {this.props.title}
-          </div>
-          <p> {this.props.comment} </p>
-          {this.renderStartButton(this.props.isLogin)}
+      <div className="col-md-12">
+        <div
+          className="alert alert-primary"
+          role="alert"
+          style={{ textAlign: "center" }}
+        >
+          {this.props.title}
         </div>
+        <p> {this.props.comment} </p>
+        {this.renderStartButton(this.props.isLogin)}
       </div>
     );
+  }
+
+  renderLoading() {
+    return (
+      <div className="col-md-12">
+        <p>問題を生成中です</p>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading, historyId } = this.props;
+
+    if (historyId) {
+      location.href = `/quiz/${this.props.historyId}`;
+    }
+
+    let mainRender = null;
+    if (loading) {
+      mainRender = this.renderLoading();
+    } else {
+      mainRender = this.renderMain(); 
+    }
+    
+    return <div className="row">{mainRender}</div>;
   }
 }

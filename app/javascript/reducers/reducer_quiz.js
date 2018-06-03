@@ -7,7 +7,11 @@ import {
   UPDATE_CHOICE_ANSWER_FAIL,
   FETCH_QUIZ_RESULT_REQUEST,
   FETCH_QUIZ_RESULT_SUCCESS,
-  FETCH_QUIZ_RESULT_FAIL
+  FETCH_QUIZ_RESULT_FAIL,
+  CLEAR_HISTORY_ID,
+  CREATE_QUIZ_REQUEST,
+  CREATE_QUIZ_SUCCESS,
+  CREATE_QUIZ_FAIL
 } from "../actions/quiz";
 
 const INITIAL_STATE = {
@@ -17,6 +21,7 @@ const INITIAL_STATE = {
   quizLists: [],
   isCompleted: false,
   resultDetails: [],
+  historyId: null
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -62,7 +67,16 @@ export default function(state = INITIAL_STATE, action) {
         resultDetails: action.results.result_details,
         loading: false
       });
-    case FETCH_QUIZ_RESULT_FAIL:
+    case CLEAR_HISTORY_ID:
+      return { ...state, historyId: null };
+    case CREATE_QUIZ_REQUEST:
+      return { ...state, loading: true };
+    case CREATE_QUIZ_SUCCESS:
+      return Object.assign({}, state, {
+        historyId: action.results.historyId,
+        loading: false
+      });
+    case CREATE_QUIZ_FAIL:
       return { ...state, loading: false };
     default:
       return state;

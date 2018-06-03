@@ -25,14 +25,15 @@ class QuestionHistory < ActiveRecord::Base
   belongs_to :medium_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
   belongs_to :small_tag, class_name: "ActsAsTaggableOn::Tag", foreign_key: :large_tag_id, optional: true
 
-  def self.create_question_history(questions: Question.create_questions, user_id: nil)
+  def self.create_question_history(questions: Question.create_questions, user_id: nil, question_list_id: 1)
     uid = SecureRandom.uuid
 
     result = QuestionResult.new
     result.attributes = {
-      question_list_id: QuestionList.first.id,
+      question_list_id: QuestionList.find(question_list_id).id,
       user_id: user_id,
       total_questions_count: questions.length,
+      history_id: uid,
     }
     result.save!
     result.reload
@@ -51,7 +52,7 @@ class QuestionHistory < ActiveRecord::Base
       history.save!
     end
 
-    [uid, QuestionHistory.where(history_id: uid)]
+    uid
   end
 
   def update_user_answer(user_choice)

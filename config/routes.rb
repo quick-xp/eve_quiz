@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :quiz_lists, only: [:show]
 
   namespace :api, defaults: { format: :json } do
-    resources :quiz, only: [:index, :update]
+    resources :quiz, only: [:index, :create]
     resources :quiz_user_answer, only: [:update]
     resources :quiz_results, only: [:show]
   end
