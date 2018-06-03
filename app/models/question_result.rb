@@ -26,6 +26,7 @@ class QuestionResult < ActiveRecord::Base
     correct_count = 0
 
     histories.each do |history|
+      self.history_id = history.history_id
       if result_detail_hash[history.large_tag.name].nil?
         result_detail_hash[history.large_tag.name] = 0
       end
