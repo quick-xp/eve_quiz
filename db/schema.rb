@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "question_results", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|
+    t.string "history_id", null: false
     t.integer "question_list_id", null: false
     t.integer "user_id"
     t.boolean "finished", default: false, null: false
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "result_detail_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_question_results_on_history_id"
   end
 
   create_table "questions", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT" do |t|

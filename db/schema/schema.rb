@@ -64,6 +64,7 @@ end
 
 create_table "question_results", collate: "utf8_bin", comment: "" do |t|
   t.int :id, primary_key: true, extra: :auto_increment
+  t.varchar :history_id
   t.int :question_list_id
   t.int :user_id, null: true
   t.boolean :finished, default: false
@@ -75,6 +76,8 @@ create_table "question_results", collate: "utf8_bin", comment: "" do |t|
 
   t.datetime :created_at
   t.datetime :updated_at
+
+  t.index ["history_id"], name: "index_question_results_on_history_id"
 end
 
 create_table "taggings", collate: "utf8_bin" do |t|
