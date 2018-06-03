@@ -1,0 +1,5 @@
+<div id="component-quiz-list-show"></div>
+<div id="server-side-contents" hidden>
+  <%= {title: @question_list.title, comment: @question_list.comment, isLogin: @is_login}.to_json %>
+</div>
+<%= javascript_pack_tag 'quiz_list_show' %>

@@ -10,6 +10,10 @@ export default class QuizHomeComponent extends React.Component {
 
   componentDidMount() {}
 
+  handleLink = e => {
+    e.stopPropagation();
+  }
+
   render() {
     const style = { backgroundColor: "#2D2619" };
     return (
@@ -23,7 +27,7 @@ export default class QuizHomeComponent extends React.Component {
               <br />
               さあ あなたの知識力をテストしよう！！
             </p>
-            <a className="btn btn-primary btn-lg" href="#" role="button">
+            <a className="btn btn-primary btn-lg" href="/quiz_lists/1" onClick={this.handleLink} role="button">
               知識力チェックへ
             </a>
           </div>

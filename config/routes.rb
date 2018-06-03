@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :quiz, only: [:show]
   resources :quiz_results, only: [:show]
+  resources :quiz_lists, only: [:show]
 
   namespace :api, defaults: { format: :json } do
     resources :quiz, only: [:index, :update]
