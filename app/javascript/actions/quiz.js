@@ -6,6 +6,9 @@ export const FETCH_QUIZ_FAIL = "FETCH_QUIZ_FAIL";
 export const UPDATE_CHOICE_ANSWER_REQUEST = "UPDATE_CHOICE_ANSWER_REQUEST";
 export const UPDATE_CHOICE_ANSWER_SUCCESS = "UPDATE_CHOICE_ANSWER_SUCCESS";
 export const UPDATE_CHOICE_ANSWER_FAIL = "UPDATE_CHOICE_ANSWER_FAIL";
+export const FETCH_QUIZ_RESULT_REQUEST = "FETCH_QUIZ_RESULT_REQUEST";
+export const FETCH_QUIZ_RESULT_SUCCESS = "FETCH_QUIZ_RESULT_SUCCESS";
+export const FETCH_QUIZ_RESULT_FAIL = "FETCH_QUIZ_RESULT_FAIL";
 
 export function fetchQuizRequest() {
   return {
@@ -66,7 +69,7 @@ export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
     dispatch(updateChoiceAnswerRequest());
     const requestBody = {
       history_id: historyId,
-      choice_id: choiceId,
+      choice_id: choiceId
     };
     api(getState)
       .put(`/api/quiz_user_answer/${questionHistoryId}`, requestBody)
@@ -75,6 +78,40 @@ export function updateChoiceAnswer(questionHistoryId, historyId, choiceId) {
       })
       .catch(error => {
         dispatch(updateChoiceAnswerFail(error));
+      });
+  };
+}
+
+export function fetchQuizResultRequest() {
+  return {
+    type: FETCH_QUIZ_RESULT_REQUEST
+  };
+}
+
+export function fetchQuizResultSuccess(results) {
+  return {
+    type: FETCH_QUIZ_RESULT_SUCCESS,
+    results
+  };
+}
+
+export function fetchQuizResultFail(error) {
+  return {
+    type: FETCH_QUIZ_RESULT_FAIL,
+    error
+  };
+}
+
+export function fetchQuizResult(historyId) {
+  return (dispatch, getState) => {
+    dispatch(fetchQuizResultRequest());
+    api(getState)
+      .get(`/api/quiz_results/${historyId}`)
+      .then(response => {
+        dispatch(fetchQuizResultSuccess(response.data));
+      })
+      .catch(error => {
+        dispatch(fetchQuizResultFail(error));
       });
   };
 }

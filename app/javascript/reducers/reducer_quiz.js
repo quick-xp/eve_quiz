@@ -4,7 +4,10 @@ import {
   FETCH_QUIZ_FAIL,
   UPDATE_CHOICE_ANSWER_REQUEST,
   UPDATE_CHOICE_ANSWER_SUCCESS,
-  UPDATE_CHOICE_ANSWER_FAIL
+  UPDATE_CHOICE_ANSWER_FAIL,
+  FETCH_QUIZ_RESULT_REQUEST,
+  FETCH_QUIZ_RESULT_SUCCESS,
+  FETCH_QUIZ_RESULT_FAIL
 } from "../actions/quiz";
 
 const INITIAL_STATE = {
@@ -12,7 +15,8 @@ const INITIAL_STATE = {
   loading: false,
   quizTotalCount: 1,
   quizLists: [],
-  isCompleted: false
+  isCompleted: false,
+  resultDetails: [],
 };
 
 export default function(state = INITIAL_STATE, action) {
@@ -38,8 +42,27 @@ export default function(state = INITIAL_STATE, action) {
       } else {
         nextquizNo = nextquizNo + 1;
       }
-      return { ...state, quizNo: nextquizNo, loading: false, isCompleted: isCompleted };
+      return {
+        ...state,
+        quizNo: nextquizNo,
+        loading: false,
+        isCompleted: isCompleted
+      };
     case UPDATE_CHOICE_ANSWER_FAIL:
+      return { ...state, loading: false };
+    case FETCH_QUIZ_RESULT_REQUEST:
+      return { ...state, loading: true };
+    case FETCH_QUIZ_RESULT_SUCCESS:
+      return Object.assign({}, state, {
+        totalQuestionCount: action.results.total_questions_count,
+        userCorrectCount: action.results.user_correct_count,
+        comment: action.results.comment,
+        resultText: action.results.result_text,
+        title: action.results.title,
+        resultDetails: action.results.result_details,
+        loading: false
+      });
+    case FETCH_QUIZ_RESULT_FAIL:
       return { ...state, loading: false };
     default:
       return state;
